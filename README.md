@@ -4,7 +4,7 @@
 
 ## Bilgilendirme
 Version 1 | Min Php Version: 5.6
-
+[C# Version](https://github.com/ErenKrt/Fivem-Server-Status)
 ## Kurulum
 
 Include 'class.php' your file.
