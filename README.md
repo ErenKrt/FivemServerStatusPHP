@@ -1,54 +1,47 @@
 # PHP Fivem Server Status / Library 
- - [Bilgilendirme](#bilgilendirme)
- - [Kurulum](#kurulum)
+ - [Information](#information)
+ - [Setup](#setup)
+ - [Usage](#usage)
 
-## Bilgilendirme
-Version 1 | Min Php Version: 5.6
+## Information
+Version 2 | Min Php Version: 5.6 \
 [C# Version](https://github.com/ErenKrt/Fivem-Server-Status)
-## Kurulum
+## Setup
 
-Include 'class.php' your file.
+Include 'ServerStatus.php' your file.
 
-## Kullanım
-
+## Usage
+### Directly Server
 ```php
+include 'ServerStatus.php';
 
-include 'class.php';
+use EpEren\Fivem\ServerStatus;
 
-use EpEren\Fivem\ServerStatus\Fivem;
+$Server= ServerStatus::ServerBased("server.tycoon.community","30122");
 
-$fivem= new Fivem("91.134.243.4:30120");
-$info= $fivem->GetInfo();
+// print_r($Server->Get()); // Get directly 
 
-$Players = $info["Players"];
-$Server = $info["Server"];
-$Client = $info["Clients"];
-$Vars = $info["Vars"];
-
-// Basic use for Players list
-
-<table style="width:40%">
-  <tr>
-    <th style="color:red;">Name</th>
-    <th style="color:red;">Ping</th>
-  </tr>
-  <tr>
-    <th>-</th>
-    <th>-</th>
-  </tr>
-  <?php
-  for ($i=0; $i <count($Players) ; $i++) {
-  ?>
-  <tr>
-    <th><?php echo $Players[$i]["name"]; ?></th>
-    <th><?php echo $Players[$i]["ping"]; ?></th>
-  </tr>
-  <?php
-  }
-
-  ?>
-</table>
-
+if($Server->IsOnline()){
+  $Data=$Server->GetCached();
+  // print_r($Data); // Explore all props
+}
 ```
 
-Geliştirci: &copy; [ErenKrt](https://www.instagram.com/ep.eren/)
+### With Fivem API
+```php
+include 'ServerStatus.php';
+
+use EpEren\Fivem\ServerStatus;
+
+$Server= ServerStatus::FivemBased("75k87b"); 
+// Key from https://servers.fivem.net/servers | Select your server in list and your key will be in url after "detail/" block.
+
+// print_r($Server->Get()); // Get directly 
+
+if($Server->IsOnline()){
+  $Data=$Server->GetCached();
+  // print_r($Data); // Explore all props
+} 
+```
+
+Developer: &copy; [ErenKrt](https://www.instagram.com/ep.eren/)
