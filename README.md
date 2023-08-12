@@ -1,47 +1,26 @@
-# PHP Fivem Server Status / Library 
+# PHP Fivem Server Status / Library
  - [Information](#information)
  - [Setup](#setup)
  - [Usage](#usage)
 
 ## Information
-Version 2 | Min Php Version: 5.6 \
-[C# Version](https://github.com/ErenKrt/Fivem-Server-Status)
+Version 4
+[C# Version](https://github.com/ErenKrt/FivemServerStatus)
 ## Setup
 
-Include 'ServerStatus.php' your file.
+Include 'FivemServerStatus.php' your file.
 
 ## Usage
-### Directly Server
 ```php
-include 'ServerStatus.php';
+require('./FivemServerStatus.php');
 
-use EpEren\Fivem\ServerStatus;
+use EpEren\FivemServerStatus\FivemServerStatus;
 
-$Server= ServerStatus::ServerBased("server.tycoon.community","30122");
+$fivemServerStatus= new FivemServerStatus();
 
-// print_r($Server->Get()); // Get directly 
-
-if($Server->IsOnline()){
-  $Data=$Server->GetCached();
-  // print_r($Data); // Explore all props
-}
+print_r($fivemServerStatus->Get("my533d"));
+print_r($fivemServerStatus->IsOnline("my533d"));
 ```
 
-### With Fivem API
-```php
-include 'ServerStatus.php';
-
-use EpEren\Fivem\ServerStatus;
-
-$Server= ServerStatus::FivemBased("75k87b"); 
-// Key from https://servers.fivem.net/servers | Select your server in list and your key will be in url after "detail/" block.
-
-// print_r($Server->Get()); // Get directly 
-
-if($Server->IsOnline()){
-  $Data=$Server->GetCached();
-  // print_r($Data); // Explore all props
-} 
-```
 
 Developer: &copy; [ErenKrt](https://www.instagram.com/ep.eren/)
